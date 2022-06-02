@@ -1,6 +1,8 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ProductApi.Util;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,8 @@ builder.Services
     );
 
 builder.Services.AddAuthorization();
+
+builder.Services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
 var app = builder.Build();
 

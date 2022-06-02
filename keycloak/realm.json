@@ -246,10 +246,24 @@
         "attributes" : { }
       } ],
       "app-client" : [ ],
-      "location-api" : [ ],
+      "location-api" : [ {
+        "id" : "12084d97-57ae-49be-8cb3-63945bafefbc",
+        "name" : "read-location",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "159f318f-95d8-48c7-8969-a690b3bc3a7c",
+        "attributes" : { }
+      } ],
       "security-admin-console" : [ ],
       "admin-cli" : [ ],
-      "product-api" : [ ],
+      "product-api" : [ {
+        "id" : "f56af03a-aca7-4293-9dd4-cad64fa0f40f",
+        "name" : "read-product",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "7ef4a1fc-2c05-4f0f-99f7-e18ee7c9a61f",
+        "attributes" : { }
+      } ],
       "account-console" : [ ],
       "broker" : [ {
         "id" : "ddf2ec70-f59d-47f7-b5a6-dbd2a01a70f0",
@@ -386,6 +400,10 @@
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
     "realmRoles" : [ "default-roles-sso" ],
+    "clientRoles" : {
+      "location-api" : [ "read-location" ],
+      "product-api" : [ "read-product" ]
+    },
     "notBefore" : 0,
     "groups" : [ ]
   } ],

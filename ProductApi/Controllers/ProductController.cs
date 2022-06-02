@@ -21,7 +21,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    [Authorize(Roles = "read-product")]
     public ActionResult<ProductListDto> Get()
     {
         var dto = new ProductListDto()
