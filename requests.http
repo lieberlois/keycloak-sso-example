@@ -1,0 +1,20 @@
+# @name login
+POST http://localhost:8080/auth/realms/SSO/protocol/openid-connect/token HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+username=demo
+&password=demo
+&grant_type=password
+&client_id=consumer
+
+###
+
+GET http://localhost:3000/api/location HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+###
+
+GET http://localhost:5000/api/product HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{login.response.body.access_token}}

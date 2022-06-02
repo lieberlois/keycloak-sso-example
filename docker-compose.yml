@@ -5,11 +5,29 @@ services:
   keycloak:
     image: jboss/keycloak:16.0.0
     ports:
-      - "8080:8080"
+      - 8080:8080
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      - KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/imports/realm.json"
     volumes:
       - ./keycloak/realm.json:/opt/jboss/keycloak/imports/realm.json
+      - ./keycloak/keycloak-add-user.json:/opt/jboss/keycloak/standalone/configuration/keycloak-add-user.json
+
+  productapi:
+    build: ./ProductApi
+    ports:
+      - 5000:5000
+    volumes:
+      - ./ProductApi:/ProductApi
+
+  locationapi:
+    build: ./location-api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./location-api:/app
+      - location-node-cache:/app/node_modules
+
+volumes:
+  location-node-cache:
