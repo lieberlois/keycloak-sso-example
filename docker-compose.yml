@@ -29,5 +29,14 @@ services:
       - ./location-api:/app
       - location-node-cache:/app/node_modules
 
+  client:
+    build: ./client
+    ports:
+      - 4200:4200
+    volumes:
+      - ./client:/app
+      - client-node-cache:/app/node_modules
+
 volumes:
   location-node-cache:
+  client-node-cache:

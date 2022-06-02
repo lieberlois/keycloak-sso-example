@@ -6,7 +6,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getAll(): Array<string> {
-    return ["Augsburg", "Berlin", "München", "Leipzig", "Heidelberg"]
+  getAll(): { cities: Array<string> } {
+    return {
+      cities: ["Augsburg", "Berlin", "München", "Leipzig", "Heidelberg"]
+    }
   }
 }

@@ -1,0 +1,31 @@
+<div>
+  <div>
+    <h1>Logged in as user: {{username}}</h1>
+    <button (click)="handleLogout()">Logout</button>
+  </div>
+
+  <div style="height: 50px"></div>
+  <div style="display: flex; flex-direction: row">
+    <!-- Locations -->
+    <div>
+      <button (click)="fetchLocations()">Fetch Locations (NestJS)</button>
+      <div *ngIf="locations$ | async as locations">
+        <h2>Locations</h2>
+        <ul *ngFor="let l of locations">
+          <li>{{l}}</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Products -->
+    <div style="margin-left: 250px;">
+      <button (click)="fetchProducts()">Fetch Products (ASP.NET Core)</button>
+      <div *ngIf="products$ | async as products">
+        <h2>Products</h2>
+        <ul *ngFor="let p of products">
+          <li>ID: {{p.id}} -  Name: {{p.name}} - Price: {{p.price}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
