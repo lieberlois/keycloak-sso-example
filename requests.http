@@ -7,13 +7,29 @@ username=demo
 &grant_type=password
 &client_id=app-client
 
-###
+### Location API
 
 GET http://localhost:3000/api/location HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{login.response.body.access_token}}
 
 ###
+
+POST http://localhost:3000/api/location HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+    "name": "Springfield"
+}
+
+###
+
+DELETE http://localhost:3000/api/location/Springfield HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+### Product API
 
 GET http://localhost:5000/api/product HTTP/1.1
 content-type: application/json
