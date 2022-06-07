@@ -37,4 +37,16 @@ public class ProductController : ControllerBase
 
         return dto;
     }
+
+    [HttpGet("example")]
+    [Authorize(Policy = "product#example")]
+    public ActionResult<Product> GetExample()
+    {
+        return new Product()
+        {
+            Id = 1,
+            Name = "Example Product",
+            Price = 1234.56
+        };
+    }
 }

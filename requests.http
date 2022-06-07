@@ -7,13 +7,18 @@ username=demo
 &grant_type=password
 &client_id=app-client
 
-### Location API
+
+
+
+### Location API ###
+
+### List all locations
 
 GET http://localhost:3000/api/location HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{login.response.body.access_token}}
 
-###
+### Create a location
 
 POST http://localhost:3000/api/location HTTP/1.1
 content-type: application/json
@@ -23,14 +28,44 @@ Authorization: Bearer {{login.response.body.access_token}}
     "name": "Springfield"
 }
 
-###
+### Delete a location
 
 DELETE http://localhost:3000/api/location/Springfield HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{login.response.body.access_token}}
 
+
+
+
+
 ### Product API
+
+### List all products
 
 GET http://localhost:5000/api/product HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{login.response.body.access_token}}
+
+### Get an example product
+
+GET http://localhost:5000/api/product/example HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+
+
+
+
+### Util
+
+### Check for resource access
+
+POST http://localhost:8080/auth/realms/SSO/protocol/openid-connect/token HTTP/1.1
+content-type: application/x-www-form-urlencoded
+Authorization: Bearer {{login.response.body.access_token}}
+
+grant_type=urn:ietf:params:oauth:grant-type:uma-ticket
+&audience=product-api
+&permission=Product
+&response_mode=decision
+# response_mode only for { result: boolean } response

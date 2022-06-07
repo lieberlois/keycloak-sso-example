@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ProductApi.Util
+namespace ProductApi.Authorization
 {
     public class ClaimsTransformer : IClaimsTransformation
     {
